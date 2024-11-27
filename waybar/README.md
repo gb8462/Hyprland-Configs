@@ -1,1 +1,1 @@
-# **Simple waybar config**
+# **Simple Waybar config**
