@@ -1,6 +1,6 @@
 show=drun
-width=900
-height=500
+width=700
+height=400
 always_parse_args=true
 show_all=true
 print_command=true

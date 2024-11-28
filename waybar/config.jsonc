@@ -2,9 +2,11 @@
     "modules-left": ["hyprland/workspaces", "tray"],
     "modules-center": ["clock", "idle_inhibitor"],
     "modules-right": ["network", "pulseaudio", "temperature", "battery", "custom/power"],
+    
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
+    
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname} ",
@@ -12,6 +14,7 @@
         "max-length": 50,
 	"on-click": "alacritty -e 'nmtui'"
     },
+    
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -20,21 +23,26 @@
         },
         "on-click": "/home/dg/.local/bin/remotecontrol"
     },
+    
     "tray": {
         "icon-size": 15,
         "spacing": 10
     },
+    
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
+    
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
+    
     "memory": {
         "format": "{}% "
     },
+    
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
         "critical-threshold": 82,
@@ -42,6 +50,7 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": [""]
     },
+    
     "battery": {
         "states": {
             // "good": 95,
@@ -55,6 +64,7 @@
         "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
+    
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} ",
@@ -74,6 +84,7 @@
         },
         "on-click": "pavucontrol"
     },
+    
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
@@ -85,16 +96,17 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
     },
-
-	"custom/power": {
-		"format": "",
-		"on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
-	},
-	"hyprland/workspaces": {
-	      "format": "{icon}",
-	      "format-icons": {
-		 "active": " ",
-	       	 "default": " "
-		}
+    
+    "custom/power": {
+	    "format": "",
+	    "on-click": "wlogout" 
+    },
+    
+    "hyprland/workspaces": {
+	    "format": "{icon}",
+	    "format-icons": {
+		    "active": " ",
+		    "default": " "
+	    }
     }
 }

@@ -12,6 +12,7 @@
 #entry:selected {
    background-color: rgb(17, 17, 17);
    padding: 5px;
+   outline-style: none;
 }
 
 
