@@ -5,12 +5,16 @@ cd
 sudo pacman -Syu
 
 # Install Hyprland
-sudo pacman -S hyprland wofi dolphin firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard
+sudo pacman -S hyprland wofi dolphin yay firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard
+
+# Install wlogout
+yay -S wlogout
 
 # configure wofi, alacritty and waybar
 mv Hyprland-Configs/configs/wofi ~/.config
 mv Hyprland-Configs/configs/alacritty.toml ~/.config
 mv Hyprland-Configs/configs/waybar ~/.config
+mv Hyprland-Configs/configs/wlogout ~/.config
 sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts noto-fonts-cjk ttf-font-awesome
 
 # configure hyprland.conf
