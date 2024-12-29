@@ -5,7 +5,7 @@ cd
 sudo pacman -Syu
 
 # Install Hyprland
-sudo pacman -S hyprland wofi dolphin yay firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip
+sudo pacman -S hyprland wofi dolphin yay firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip lightdm
 
 # Install wlogout
 yay -S wlogout
@@ -32,9 +32,15 @@ touch ~/.config/hypr/hyprpaper.conf
 cp Hyprland-Configs/configs/hypr/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
 
 # minimal vim
-
 touch .vimrc
 cp Hyprland-Configs/configs/.vimrc .vimrc
+
+# LightDM
+sudo pacman -S lightdm
+sudo systemctl enable lightdm.service
+sudo pacman -S lightdm-slick-greeter
+sudo mv Hyprland-Configs/configs/Lighdm/slick-greeter.conf /etc/lightdm/slick-greeter.conf
+sudo cp Hyprland-Configs/configs/Lighdm/lightdm.conf /etc/lightdm/lightdm.conf
 
 reboot
 exit
