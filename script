@@ -5,7 +5,7 @@ cd
 sudo pacman -Syu
 
 # Install Hyprland
-sudo pacman -S hyprland wofi dolphin yay firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard
+sudo pacman -S hyprland wofi dolphin yay firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip
 
 # Install wlogout
 yay -S wlogout
@@ -30,6 +30,11 @@ sudo cp Hyprland-Configs/Wallpapers/* /usr/share/wallpaper/
 # Setting up wallpaper
 touch ~/.config/hypr/hyprpaper.conf
 cp Hyprland-Configs/configs/hypr/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
+
+# minimal vim
+
+touch .vimrc
+cp Hyprland-Configs/configs/.vimrc .vimrc
 
 reboot
 exit
