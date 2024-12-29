@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Trap any error and print the error message with the line number
+trap 'echo "Error occurred at line $LINENO"; exit 1' ERR
+
 # Change to the home directory
 cd ~
 
@@ -10,10 +13,15 @@ sudo pacman -Syu || { echo "System update failed."; exit 1; }
 sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip || { echo "Package installation failed."; exit 1; }
 
 # Install yay
-git clone https://aur.archlinux.org/yay.git || { echo "Failed to clone yay."; exit 1; }
-pushd yay
-makepkg -si || { echo "Failed to build/install yay."; exit 1; }
-popd
+if ! command -v yay &> /dev/null; then
+    echo "yay could not be found, installing yay..."
+    git clone https://aur.archlinux.org/yay.git
+    pushd yay
+    makepkg -si || { echo "Failed to build/install yay."; exit 1; }
+    popd
+else
+    echo "yay is already installed."
+fi
 
 # Install wlogout and brave in yay
 yay -S wlogout brave-bin || { echo "Failed to install AUR packages."; exit 1; }
@@ -23,6 +31,8 @@ mv Hyprland-Configs/configs/wofi ~/.config
 mv Hyprland-Configs/configs/alacritty.toml ~/.config
 mv Hyprland-Configs/configs/waybar ~/.config
 mv Hyprland-Configs/configs/wlogout ~/.config
+
+# installing Fonts
 sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts noto-fonts-cjk ttf-font-awesome
 
 # configure hyprland.conf
@@ -32,7 +42,7 @@ cp Hyprland-Configs/configs/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
 sudo pacman -S hyprpaper
 
 # configure wallpaper path
-sudo mkdir /usr/share/wallpaper
+sudo mkdir -p /usr/share/wallpaper
 sudo cp Hyprland-Configs/Wallpapers/* /usr/share/wallpaper/
 
 # Setting up wallpaper
