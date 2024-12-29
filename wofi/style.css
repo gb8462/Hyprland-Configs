@@ -1,0 +1,43 @@
+#entry {
+   border-radius: 5px;
+   padding: 5px;
+   margin: 0px 4px 0px 4px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#entry:selected {
+   background-color: rgb(17, 17, 17);
+   padding: 5px;
+   outline-style: none;
+}
+
+
+#window {
+   animation-name: fadeIn;
+   animation-duration: 0.4s;
+   background-color: rgb(32, 32, 32);
+   font-size: 14;
+}
+
+#input {
+   border: none;
+   background-color: rgb(51, 51, 51);
+   border-radius: 10px;
+   margin: 5px 5px 5px 5px;
+   padding: 8px;
+}
+
+#inner-box {
+   border-radius: 10px;
+   margin: 5px;
+   padding-top: 5px;
+}
+
+#outer-box {
+   border-radius: 10px;
+   padding: 5px;
+}
