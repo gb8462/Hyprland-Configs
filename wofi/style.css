@@ -1,6 +1,7 @@
 #entry {
    border-radius: 5px;
    padding: 5px;
+   color: white;
    margin: 0px 4px 0px 4px;
 }
 
@@ -10,22 +11,21 @@
 }
 
 #entry:selected {
-   background-color: rgb(17, 17, 17);
+   background-color: rgb(8, 2, 20);
    padding: 5px;
    outline-style: none;
 }
 
-
 #window {
    animation-name: fadeIn;
    animation-duration: 0.4s;
-   background-color: rgb(32, 32, 32);
+   background-color: rgba(52, 32, 95, 0.781);
    font-size: 14;
 }
 
 #input {
    border: none;
-   background-color: rgb(51, 51, 51);
+   background-color: rgb(16, 12, 26);
    border-radius: 10px;
    margin: 5px 5px 5px 5px;
    padding: 8px;
@@ -35,6 +35,7 @@
    border-radius: 10px;
    margin: 5px;
    padding-top: 5px;
+   opacity: 0.8;
 }
 
 #outer-box {
