@@ -4,12 +4,13 @@
 sudo pacman -Syu
 
 # Install Hyprland
-sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip lightdm
+sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip
 
 # Install yay
 git clone https://aur.archlinux.org/yay.git
-cd yay
+pushd yay
 makepkg -si
+popd
 
 # Install wlogout and brave in yay
 yay -S wlogout
@@ -48,4 +49,3 @@ sudo mv Hyprland-Configs/configs/Lighdm/slick-greeter.conf /etc/lightdm/slick-gr
 sudo cp Hyprland-Configs/configs/Lighdm/lightdm.conf /etc/lightdm/lightdm.conf
 
 reboot
-exit
