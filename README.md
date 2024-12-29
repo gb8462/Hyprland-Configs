@@ -26,3 +26,4 @@ chmod +x script
 
 ![image](https://github.com/user-attachments/assets/ef27afce-be0c-42c2-abad-e6071efe3da2)
 ![image](https://github.com/user-attachments/assets/a0bb972d-c628-42f6-842a-45b61f2b20b7)
+![image](https://github.com/user-attachments/assets/f5da6c4c-faea-410a-9fd8-7ac3923f52a9)
