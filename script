@@ -5,12 +5,12 @@ cd
 sudo pacman -Syu
 
 # Install Hyprland
-sudo pacman -S hyprland wofi dolphin yay firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip lightdm
+sudo pacman -S hyprland wofi dolphin yay vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip lightdm
 
 # Install wlogout
 yay -S wlogout
 
-# configure wofi, alacritty and waybar
+# configure wofi, alacritty, wlogout and waybar
 mv Hyprland-Configs/configs/wofi ~/.config
 mv Hyprland-Configs/configs/alacritty.toml ~/.config
 mv Hyprland-Configs/configs/waybar ~/.config
