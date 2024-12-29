@@ -1,13 +1,17 @@
 #!/bin/bash
 
 # update your system
-cd
 sudo pacman -Syu
 
 # Install Hyprland
-sudo pacman -S hyprland wofi dolphin yay vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip lightdm
+sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip lightdm
 
-# Install wlogout and brave
+# Install yay
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# Install wlogout and brave in yay
 yay -S wlogout
 yay -S brave-bin
 
