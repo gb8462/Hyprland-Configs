@@ -14,13 +14,13 @@ git clone https://github.com/gb8462/Hyprland-Configs.git
 Create a waybar directory then copy the config file to your waybar directory
 ```bash
 mkdir ~/.config/waybar
-cp Hyprland-Configs/waybar* ~/.config/waybar
+cp Hyprland-Configs/configs/waybar* ~/.config/waybar
 ```
 
 Or
 
 ```bash
-mv Hyprland-Configs/waybar ~/.config
+mv Hyprland-Configs/configs/waybar ~/.config
 ```
 This will move the waybar directory and its configs to your `~/.config`
 

@@ -11,6 +11,7 @@ sudo pacman -S hyprland wofi dolphin firefox alacritty waybar pulseaudio pipewir
 mv Hyprland-Configs/configs/wofi ~/.config
 mv Hyprland-Configs/configs/alacritty.toml ~/.config
 mv Hyprland-Configs/configs/waybar ~/.config
+sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts noto-fonts-cjk ttf-font-awesome
 
 # configure hyprland.conf
 cp Hyprland-Configs/configs/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
