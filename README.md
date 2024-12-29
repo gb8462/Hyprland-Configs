@@ -13,13 +13,8 @@ git clone https://github.com/gb8462/Hyprland-Configs.git
 sudo pacman -S git
 git clone https://github.com/gb8462/Hyprland-Configs.git
 cd Hyprland-Configs
-```
-
-```bash
 chmod +x script
-```
-
-```bash
+mv script ~
 ./script
 ```
 
