@@ -10,6 +10,7 @@ git clone https://github.com/gb8462/Hyprland-Configs.git
 ### Use script
 
 ```bash
+sudo pacman -S git
 git clone https://github.com/gb8462/Hyprland-Configs.git
 cd Hyprland-Configs
 ```

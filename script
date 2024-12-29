@@ -1,20 +1,19 @@
 #!/bin/bash
 
 # update your system
-sudo pacman -Syu
+sudo pacman -Syu || { echo "System update failed."; exit 1; }
 
 # Install Hyprland
-sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip
+sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip || { echo "Package installation failed."; exit 1; }
 
 # Install yay
-git clone https://aur.archlinux.org/yay.git
+git clone https://aur.archlinux.org/yay.git || { echo "Failed to clone yay."; exit 1; }
 pushd yay
-makepkg -si
+makepkg -si || { echo "Failed to build/install yay."; exit 1; }
 popd
 
 # Install wlogout and brave in yay
-yay -S wlogout
-yay -S brave-bin
+yay -S wlogout brave-bin || { echo "Failed to install AUR packages."; exit 1; }
 
 # configure wofi, alacritty, wlogout and waybar
 mv Hyprland-Configs/configs/wofi ~/.config
@@ -42,10 +41,15 @@ touch .vimrc
 cp Hyprland-Configs/configs/.vimrc .vimrc
 
 # LightDM
-sudo pacman -S lightdm
+sudo pacman -S lightdm lightdm-slick-greeter || { echo "Failed to install LightDM."; exit 1; }
 sudo systemctl enable lightdm.service
-sudo pacman -S lightdm-slick-greeter
 sudo mv Hyprland-Configs/configs/Lighdm/slick-greeter.conf /etc/lightdm/slick-greeter.conf
 sudo cp Hyprland-Configs/configs/Lighdm/lightdm.conf /etc/lightdm/lightdm.conf
 
-reboot
+# Reboot
+read -p "Setup complete. Do you want to reboot now? (y/n): " REBOOT
+if [[ $REBOOT =~ ^[Yy]$ ]]; then
+    reboot
+else
+    echo "Reboot skipped. Please reboot manually to apply changes."
+fi
