@@ -22,8 +22,7 @@ chmod +x script
 ./script
 ```
 
-## Overview
+<h2 align="center">Overview</h2>
 
 ![image](https://github.com/user-attachments/assets/ef27afce-be0c-42c2-abad-e6071efe3da2)
 ![image](https://github.com/user-attachments/assets/a0bb972d-c628-42f6-842a-45b61f2b20b7)
-
