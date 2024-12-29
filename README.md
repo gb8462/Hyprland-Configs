@@ -1,13 +1,16 @@
-# Hyprland Config
+# Hyprland
+```bash
+sudo pacman -S hyprland 
+```
 
 ### Manual set-up
 Clone this repository -_(Then follow the instructions on README files)_
 ```bash
-sudo pacman -S hyprland
+sudo pacman -S git
 git clone https://github.com/gb8462/Hyprland-Configs.git
 ```
 
-### Use script
+### Using script
 
 ```bash
 sudo pacman -S git
