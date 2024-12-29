@@ -1,4 +1,4 @@
-# Hyprland
+# Hyprland Config
 
 ### Manual set-up
 Clone this repository -_(Then follow the instructions on README files)_
