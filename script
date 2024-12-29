@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# update your system
+cd
+sudo pacman -Syu
+
+# Install Hyprland
+sudo pacman -S hyprland wofi dolphin alacritty pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard
+
+# configure wofi and alacritty
+mv Hyprland-Configs/configs/wofi ~/.config
+mv Hyprland-Configs/configs/alacritty.toml ~/.config
+
+# configure hyprland.conf
+cp Hyprland-Configs/configs/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+
+# install Hyprpaper
+sudo pacman -S hyprpaper
+
+# configure wallpaper path
+sudo mkdir /usr/share/wallpaper
+sudo cp Hyprland-Configs/Wallpapers/* /usr/share/wallpaper/
+
+# Setting up wallpaper
+touch ~/.config/hypr/hyprpaper.conf
+cp Hyprland-Configs/configs/hypr/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
+
+reboot
+exit
