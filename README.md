@@ -14,7 +14,6 @@ sudo pacman -S git
 git clone https://github.com/gb8462/Hyprland-Configs.git
 cd Hyprland-Configs
 chmod +x script
-mv script ~
 ./script
 ```
 

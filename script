@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Change to the home directory
+cd ~
+
 # update your system
 sudo pacman -Syu || { echo "System update failed."; exit 1; }
 
