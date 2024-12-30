@@ -13,18 +13,14 @@ sudo pacman -Syu || { echo "System update failed."; exit 1; }
 sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pulseaudio pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip || { echo "Package installation failed."; exit 1; }
 
 # Install yay
-if ! command -v yay &> /dev/null; then
-    echo "yay could not be found, installing yay..."
-    git clone https://aur.archlinux.org/yay.git
-    pushd yay
-    makepkg -si || { echo "Failed to build/install yay."; exit 1; }
-    popd
-else
-    echo "yay is already installed."
-fi
+git clone https://aur.archlinux.org/yay.git
+pushd yay
+makepkg -si || { echo "Failed to build/install yay."; exit 1; }
+popd
 
 # Install wlogout and brave in yay
-yay -S wlogout brave-bin || { echo "Failed to install AUR packages."; exit 1; }
+yay -S wlogout || { echo "Failed to install AUR packages."; exit 1; }
+yay -S brave-bin || { echo "Failed to install AUR packages."; exit 1; }
 
 # configure wofi, alacritty, wlogout and waybar
 mv Hyprland-Configs/configs/wofi ~/.config
@@ -36,7 +32,8 @@ mv Hyprland-Configs/configs/wlogout ~/.config
 sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts noto-fonts-cjk ttf-font-awesome
 
 # configure hyprland.conf
-cp Hyprland-Configs/configs/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+mkdir -p ~/.config/hypr
+mv Hyprland-Configs/configs/hypr/hyprland.conf ~/.config/hypr
 
 # install Hyprpaper
 sudo pacman -S hyprpaper
@@ -56,8 +53,9 @@ cp Hyprland-Configs/configs/.vimrc .vimrc
 # LightDM
 sudo pacman -S lightdm lightdm-slick-greeter || { echo "Failed to install LightDM."; exit 1; }
 sudo systemctl enable lightdm.service
-sudo mv Hyprland-Configs/configs/Lighdm/slick-greeter.conf /etc/lightdm/slick-greeter.conf
-sudo cp Hyprland-Configs/configs/Lighdm/lightdm.conf /etc/lightdm/lightdm.conf
+cd Hyprland-Configs/configs/Lightdm
+sudo mv slick-greeter.conf /etc/lightdm/slick-greeter.conf
+sudo cp lightdm.conf /etc/lightdm/lightdm.conf
 
 # Reboot
 read -p "Setup complete. Do you want to reboot now? (y/n): " REBOOT
