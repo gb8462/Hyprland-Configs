@@ -3,20 +3,17 @@
 sudo pacman -S hyprland 
 ```
 
-### Manual set-up
-Clone this repository -_(Then follow the instructions on README files)_
+### Setting up
+_Clone this repository_
 ```bash
 sudo pacman -S git
 git clone https://github.com/gb8462/Hyprland-Configs.git
 ```
 
-### Using script
-
+### Using The Script
+_This script will automate moving and copying all the configs inside **Hyprland-Configs**_
 ```bash
-sudo pacman -S git
-git clone https://github.com/gb8462/Hyprland-Configs.git
 cd Hyprland-Configs
-chmod +x script
 ./script
 ```
 

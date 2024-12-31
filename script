@@ -20,7 +20,6 @@ popd
 
 # Install wlogout and brave in yay
 yay -S wlogout || { echo "Failed to install AUR packages."; exit 1; }
-yay -S brave-bin || { echo "Failed to install AUR packages."; exit 1; }
 
 # configure wofi, alacritty, wlogout and waybar
 mv Hyprland-Configs/configs/wofi ~/.config
