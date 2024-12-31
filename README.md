@@ -4,7 +4,7 @@ Just for fun I made a script that will automate my task of setting up my persona
 
 The script automate downloading Hyprland, wofi ,dolphin and alacritty, and setting up the wofi, waybar, wallpaper and wlogout, it also set up the sound so I don't have to try and go to the trouble of configuring it for hours!, it also set up grim and slurp for taking screenshots. it also install pipewire, wireplumber and xdg-desktop-portal-hyprland for screen capture!
 
-### Setting up
+### Setting Up
 _Clone this repository_
 ```bash
 sudo pacman -S git
