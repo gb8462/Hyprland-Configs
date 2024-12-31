@@ -2,7 +2,7 @@
 
 Just for fun I made a script that will automate my task of setting up my personal Desktop Environment.
 
-The script automate Installing Hyprland, wofi ,dolphin and alacritty, and setting up the wofi, waybar, wallpaper and wlogout, it also set up the sound so I don't have to try and go to the trouble of configuring it for hours!, it also set up grim and slurp for taking screenshots. it also install pipewire, wireplumber and xdg-desktop-portal-hyprland for screen capture!
+The script automate Installing Hyprland, wofi ,dolphin, alacritty and waybar, and setting up the wofi, waybar, wallpaper and wlogout, it also set up the sound so I don't have to try and go to the trouble of configuring it for hours!, it also set up grim and slurp for taking screenshots. it also install pipewire, wireplumber and xdg-desktop-portal-hyprland for screen capture!
 
 ### Setting Up
 _Clone this repository_
