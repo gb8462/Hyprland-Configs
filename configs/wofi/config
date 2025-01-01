@@ -1,4 +1,5 @@
 show=drun
+normal_window=true
 width=700
 height=400
 always_parse_args=true

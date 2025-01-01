@@ -19,13 +19,13 @@
 #window {
    animation-name: fadeIn;
    animation-duration: 0.4s;
-   background-color: rgba(52, 32, 95, 0.781);
+   background-color: rgba(52, 32, 95, 0.842);
    font-size: 14;
 }
 
 #input {
    border: none;
-   background-color: rgba(16, 12, 26, 0.89);
+   background-color: rgb(30, 22, 49);
    border-radius: 10px;
    margin: 5px 5px 5px 5px;
    padding: 8px;
