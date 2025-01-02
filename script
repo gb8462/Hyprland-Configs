@@ -20,7 +20,7 @@ pushd yay
 makepkg -si || { echo "Failed to build/install yay."; exit 1; }
 popd
 
-# Install wlogout and brave in yay
+# Install wlogout in yay
 yay -S wlogout || { echo "Failed to install AUR packages."; exit 1; }
 
 # configure wofi, alacritty, wlogout and waybar
