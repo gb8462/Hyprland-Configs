@@ -12,7 +12,7 @@ cd ~
 sudo pacman -Syu || { echo "System update failed."; exit 1; }
 
 # Install Hyprland
-sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pipewire-pulse pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip || { echo "Package installation failed."; exit 1; }
+sudo pacman -S hyprland wofi dolphin vim firefox alacritty waybar pipewire-pulse pipewire wireplumber xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip man || { echo "Package installation failed."; exit 1; }
 
 # Install yay
 git clone https://aur.archlinux.org/yay.git
