@@ -1,6 +1,6 @@
 {
     "modules-left": ["hyprland/workspaces", "tray"],
-    "modules-center": ["clock", "idle_inhibitor"],
+    "modules-center": ["clock"],
     "modules-right": ["network", "pulseaudio", "temperature", "battery", "custom/power"],
     
     "sway/mode": {
