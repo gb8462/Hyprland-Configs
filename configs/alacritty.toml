@@ -1,4 +1,11 @@
 [window]
 padding = { x = 3, y = 3 }
-opacity = 0.7
+opacity = 0.6
 blur = true
+
+[font]
+normal = { family = "monospace", style = "Regular" }
+size = 11
+
+[colors.primary]
+background = "#392158"
