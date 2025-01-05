@@ -23,8 +23,8 @@ window#waybar {
     margin: 2px 0 0 0;
 }
 .modules-left {
+    background-color: rgb(17, 14, 38);
     margin: 2px 0 0 5px;
-    background: rgb(17, 14, 38);
 }
 /*-----modules indv----*/
 #workspaces button {
