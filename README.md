@@ -21,5 +21,5 @@ cd Hyprland-Configs
 <h2 align="center">Overview</h2>
 
 ![image](https://github.com/user-attachments/assets/b896442a-96ec-418b-a22c-87eb215ec55a)
-![image](https://github.com/user-attachments/assets/64cb0841-e36f-4c9e-98f3-31291d54c197)
 ![image](https://github.com/user-attachments/assets/3b6f28d6-0470-400a-b07d-2ca1a5a6c196)
+![image](https://github.com/user-attachments/assets/64cb0841-e36f-4c9e-98f3-31291d54c197)
