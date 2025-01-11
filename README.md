@@ -1,8 +1,9 @@
 # Hyprland
 
-Just for fun I made a script that will automate my task of setting up my personal Desktop Environment.
+**Just for fun I made a script that will automate my task of setting up my personal Desktop Environment.**
 
 The script automate Installing the basics, Hyprland, wofi ,dolphin, alacritty and waybar, and install and configure the necessary things needed in order to have a functional Desktop Environment.
+
 ### Setting Up
 _Clone this repository_
 ```bash
