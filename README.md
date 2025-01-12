@@ -1,8 +1,8 @@
 # Hyprland
 
-Just for fun I made a script that will automate my task of setting up my personal Desktop Environment.
+**Just for fun I made a script that will automate my task of setting up my personal Desktop Environment.**
 
-The script automate Installing the basic Hyprland, wofi ,dolphin, alacritty and waybar, and configuring up the wofi, waybar, wallpaper and wlogout, it also set up the sound so I don't have to try and go to the trouble of configuring it for hours!, it also set up grim and slurp for taking screenshots and it also install pipewire, wireplumber and xdg-desktop-portal-hyprland for screen recording!
+The script automate Installing the basics, Hyprland, wofi ,dolphin, alacritty and waybar, and install and configure the necessary things needed in order to have a functional Desktop Environment.
 
 ### Setting Up
 _Clone this repository_
@@ -20,6 +20,6 @@ cd Hyprland-Configs
 
 <h2 align="center">Overview</h2>
 
-![image](https://github.com/user-attachments/assets/ef27afce-be0c-42c2-abad-e6071efe3da2)
-![image](https://github.com/user-attachments/assets/a0bb972d-c628-42f6-842a-45b61f2b20b7)
-![image](https://github.com/user-attachments/assets/f5da6c4c-faea-410a-9fd8-7ac3923f52a9)
+![image](https://github.com/user-attachments/assets/b896442a-96ec-418b-a22c-87eb215ec55a)
+![image](https://github.com/user-attachments/assets/3b6f28d6-0470-400a-b07d-2ca1a5a6c196)
+![image](https://github.com/user-attachments/assets/64cb0841-e36f-4c9e-98f3-31291d54c197)
