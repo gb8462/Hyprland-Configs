@@ -8,4 +8,4 @@ normal = { family = "monospace", style = "Regular" }
 size = 11
 
 [colors.primary]
-background = "#392158"
+background = "#12203a"
