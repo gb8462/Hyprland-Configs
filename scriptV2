@@ -1,0 +1,72 @@
+#!/bin/bash
+
+trap 'echo "Error occurred at line $LINENO"; exit 1' ERR
+
+install_if_needed() {
+    local package=$1
+    if ! pacman -Q "$package" &>/dev/null; then
+        sudo pacman -S --noconfirm "$package"
+    else
+        echo "$package is already installed."
+    fi
+}
+
+yay_install_if_needed() {
+    local package=$1
+    if ! yay -Q "$package" &>/dev/null; then
+        yay -S --noconfirm "$package"
+    else
+        echo "$package is already installed."
+    fi
+}
+
+# Update system
+sudo pacman -Syu --needed --noconfirm || { echo "System update failed."; exit 1; }
+
+# Install core packages
+PACKAGES=("hyprland" "wofi" "dolphin" "vim" "firefox" "alacritty" "waybar" "pipewire-pulse" "pipewire" "wireplumber" "xdg-desktop-portal-hyprland" "pavucontrol" "grim" "slurp" "wl-clipboard" "unzip" "man")
+for pkg in "${PACKAGES[@]}"; do
+    install_if_needed "$pkg"
+done
+
+# Install yay
+if [ ! -d "yay" ]; then
+    git clone https://aur.archlinux.org/yay.git
+    pushd yay
+    makepkg -si || { echo "Failed to build/install yay."; exit 1; }
+    popd
+else
+    echo "Yay is already cloned and installed."
+fi
+
+# Install AUR packages
+yay_install_if_needed "wlogout"
+
+# Configure files and directories
+CONFIGS=("wofi" "alacritty.toml" "waybar" "wlogout" "hypr/hyprland.conf" "hypr/hyprpaper.conf")
+for cfg in "${CONFIGS[@]}"; do
+    if [ ! -e "~/.config/$cfg" ]; then
+        mv "Hyprland-Configs/configs/$cfg" "~/.config"
+    else
+        echo "$cfg already exists in ~/.config."
+    fi
+done
+
+# Install and configure LightDM (optional)
+read -p "Do you want to install LightDM? (y/n): " INSTALL_LIGHTDM
+if [[ $INSTALL_LIGHTDM =~ ^[Yy]$ ]]; then
+    install_if_needed lightdm
+    install_if_needed lightdm-slick-greeter
+    sudo systemctl enable lightdm.service
+    sudo mv Hyprland-Configs/configs/Lightdm/slick-greeter.conf /etc/lightdm/slick-greeter.conf
+    sudo cp Hyprland-Configs/configs/Lightdm/lightdm.conf /etc/lightdm/lightdm.conf
+fi
+
+# Reboot prompt
+read -p "Setup complete. Do you want to reboot now? (y/n): " REBOOT
+if [[ $REBOOT =~ ^[Yy]$ ]]; then
+    reboot
+else
+    echo "Reboot skipped. Please reboot manually to apply changes."
+fi
+
