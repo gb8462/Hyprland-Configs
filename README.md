@@ -4,6 +4,8 @@
 
 The script automate Installing the basics, Hyprland, wofi ,dolphin, alacritty and waybar, and install and configure the necessary things needed in order to have a functional Desktop Environment.
 
+_ScriptV2 remain untested_
+
 ### Setting Up
 _Clone this repository_
 ```bash
