@@ -2,8 +2,6 @@
 
 **Just for fun I made a script that will automate my task of setting up my personal Desktop Environment.**
 
-**_ScriptV2 Remain Untested_**
-
 The script automate Installing the basics, Hyprland, wofi ,dolphin, alacritty and waybar, and install and configure the necessary things needed in order to have a functional Desktop Environment.
 
 ### Setting Up
@@ -19,6 +17,7 @@ _This script will automate moving and copying all the configs inside **Hyprland-
 cd Hyprland-Configs
 ./script
 ```
+**_ScriptV2 Remain Untested_**
 
 <h2 align="center">Overview</h2>
 
