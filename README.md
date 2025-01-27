@@ -17,6 +17,7 @@ _This script will automate moving and copying all the configs inside **Hyprland-
 cd Hyprland-Configs
 ./script
 ```
+**_(ScriptV2 Remain Untested)_**
 
 <h2 align="center">Overview</h2>
 
