@@ -41,11 +41,11 @@ sudo pacman -S hyprpaper
 
 # configure wallpaper path
 sudo mkdir -p /usr/share/wallpaper
-sudo cp Hyprland-Configs/Wallpapers/* /usr/share/wallpaper/
+sudo cp -r Hyprland-Configs/Wallpapers/* /usr/share/wallpaper/
 
 # Setting up wallpaper
 touch ~/.config/hypr/hyprpaper.conf
-cp Hyprland-Configs/configs/hypr/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
+cp -r Hyprland-Configs/configs/hypr/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
 
 # minimal vim
 touch .vimrc
