@@ -12,6 +12,7 @@ cd ~
 sudo pacman -Syu --needed --noconfirm || { echo "System update failed."; exit 1; }
 
 # Install Hyprland and related packages
+cd Hyprland-Configs
 PACKAGES=("hyprland" "wofi" "dolphin" "vim" "firefox" "alacritty" "waybar" "pipewire-pulse" "pipewire" "wireplumber" "xdg-desktop-portal-hyprland" "pavucontrol" "grim" "slurp" "wl-clipboard" "unzip" "man")
 for pkg in "${PACKAGES[@]}"; do
     if ! pacman -Q "$pkg" &>/dev/null; then
@@ -42,7 +43,7 @@ fi
 CONFIGS=("wofi" "alacritty.toml" "waybar" "wlogout")
 for config in "${CONFIGS[@]}"; do
     if [ ! -e "~/.config/$config" ]; then
-        mv "Hyprland-Configs/configs/$config" "~/.config"
+        cp -r "Hyprland-Configs/configs/$config" "~/.config"
     else
         echo "Configuration $config already exists in ~/.config."
     fi
