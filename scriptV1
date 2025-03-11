@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# I made this script to set up my Hyprland because why not.
+
+# Trap any error and print the error message with the line number
+trap 'echo "Error occurred at line $LINENO"; exit 1' ERR
+
+# Change to the home directory
+cd ~
+
+# Update your system
+sudo pacman -Syu || { echo "System update failed."; exit 1; }
+
+# Install Hyprland
+sudo pacman -S --needed hyprland wofi dolphin vim firefox alacritty waybar pipewire-pulse pipewire wireplumber \
+    xdg-desktop-portal-hyprland pavucontrol grim slurp wl-clipboard unzip man || { echo "Package installation failed."; exit 1; }
+
+# Install yay
+if [ ! -d "yay" ]; then
+    git clone https://aur.archlinux.org/yay.git
+    pushd yay
+    makepkg -si || { echo "Failed to build/install yay."; exit 1; }
+    popd
+else
+    echo "Yay is already cloned."
+fi
+
+# Install wlogout in yay
+if ! yay -Q "wlogout" &>/dev/null; then
+    yay -S wlogout || { echo "Failed to install AUR packages."; exit 1; }
+else
+    echo "Wlogout is already installed."
+fi
+
+# Define config path
+CONFIG_DIR="$HOME/Hyprland-Configs/configs"
+
+# Check if Hyprland-Configs exists
+if [ ! -d "$CONFIG_DIR" ]; then
+    echo "Error: Hyprland-Configs directory not found at $CONFIG_DIR!"
+    exit 1
+fi
+
+# Configure wofi, alacritty, wlogout, and waybar
+mkdir -p ~/.config
+cp -r "$CONFIG_DIR/wofi" ~/.config
+cp -r "$CONFIG_DIR/alacritty.toml" ~/.config
+cp -r "$CONFIG_DIR/waybar" ~/.config
+cp -r "$CONFIG_DIR/wlogout" ~/.config
+
+# Install fonts
+sudo pacman -S --needed noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-font-awesome
+
+# Configure hyprland.conf
+mkdir -p ~/.config/hypr
+cp -r "$CONFIG_DIR/hypr/hyprland.conf" ~/.config/hypr
+
+# Install Hyprpaper
+sudo pacman -S --needed hyprpaper
+
+# Configure wallpaper path
+sudo mkdir -p /usr/share/wallpaper
+sudo cp -r "$HOME/Hyprland-Configs/Wallpapers/"* /usr/share/wallpaper/
+
+# Setting up wallpaper
+mkdir -p ~/.config/hypr
+cp -r "$CONFIG_DIR/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
+
+# Minimal Vim config
+cp "$CONFIG_DIR/.vimrc" ~/.vimrc
+
+# Install LightDM
+sudo pacman -S --needed lightdm lightdm-slick-greeter || { echo "Failed to install LightDM."; exit 1; }
+sudo systemctl enable lightdm.service
+
+# Configure LightDM
+LIGHTDM_DIR="$CONFIG_DIR/Lightdm"
+if [ -d "$LIGHTDM_DIR" ]; then
+    sudo cp "$LIGHTDM_DIR/slick-greeter.conf" /etc/lightdm/slick-greeter.conf
+    sudo cp "$LIGHTDM_DIR/lightdm.conf" /etc/lightdm/lightdm.conf
+else
+    echo "Error: LightDM config directory not found!"
+fi
+
+# Reboot
+read -p "Setup complete. Do you want to reboot now? (y/n): " REBOOT
+if [[ $REBOOT =~ ^[Yy]$ ]]; then
+    reboot
+else
+    echo "Reboot skipped. Please reboot manually to apply changes."
+fi
