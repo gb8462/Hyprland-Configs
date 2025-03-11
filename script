@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# I made this script to set up my Hyprland because why not.
+# This script is the earliest version, Expect Error.
 
 # Trap any error and print the error message with the line number
 trap 'echo "Error occurred at line $LINENO"; exit 1' ERR
