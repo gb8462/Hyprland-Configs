@@ -8,28 +8,36 @@ trap 'echo "Error occurred at line $LINENO"; exit 1' ERR
 # Change to the home directory
 cd ~
 
+# Define the Hyprland config directory
+CONFIG_DIR="$HOME/Hyprland-Configs"
+
+# Check if Hyprland-Configs exists
+if [ ! -d "$CONFIG_DIR" ]; then
+    echo "Error: $CONFIG_DIR not found!"
+    exit 1
+fi
+
 # Update your system
 sudo pacman -Syu --needed --noconfirm || { echo "System update failed."; exit 1; }
 
 # Install Hyprland and related packages
-cd Hyprland-Configs
 PACKAGES=("hyprland" "wofi" "dolphin" "vim" "firefox" "alacritty" "waybar" "pipewire-pulse" "pipewire" "wireplumber" "xdg-desktop-portal-hyprland" "pavucontrol" "grim" "slurp" "wl-clipboard" "unzip" "man")
 for pkg in "${PACKAGES[@]}"; do
     if ! pacman -Q "$pkg" &>/dev/null; then
-        sudo pacman -S --noconfirm "$pkg" || { echo "Failed to install $pkg."; exit 1; }
+        sudo pacman -S --needed --noconfirm "$pkg" || { echo "Failed to install $pkg."; exit 1; }
     else
         echo "$pkg is already installed."
     fi
 done
 
 # Install yay
-if [ ! -d "yay" ]; then
-    git clone https://aur.archlinux.org/yay.git
-    pushd yay
+if ! command -v yay &>/dev/null; then
+    git clone https://aur.archlinux.org/yay.git "$HOME/yay"
+    pushd "$HOME/yay"
     makepkg -si --noconfirm || { echo "Failed to build/install yay."; exit 1; }
     popd
 else
-    echo "Yay is already cloned."
+    echo "Yay is already installed."
 fi
 
 # Install wlogout using yay
@@ -40,10 +48,11 @@ else
 fi
 
 # Configure wofi, alacritty, wlogout, and waybar
+mkdir -p "$HOME/.config"
 CONFIGS=("wofi" "alacritty.toml" "waybar" "wlogout")
 for config in "${CONFIGS[@]}"; do
     if [ ! -e "$HOME/.config/$config" ]; then
-        cp -r "Hyprland-Configs/configs/$config" "$HOME/.config"
+        cp -r "$CONFIG_DIR/configs/$config" "$HOME/.config"
     else
         echo "Configuration $config already exists in $HOME/.config."
     fi
@@ -53,7 +62,7 @@ done
 FONT_PACKAGES=("noto-fonts" "noto-fonts-emoji" "noto-fonts-cjk" "ttf-font-awesome")
 for font in "${FONT_PACKAGES[@]}"; do
     if ! pacman -Q "$font" &>/dev/null; then
-        sudo pacman -S --noconfirm "$font"
+        sudo pacman -S --needed --noconfirm "$font"
     else
         echo "Font package $font is already installed."
     fi
@@ -62,14 +71,14 @@ done
 # Configure hyprland.conf
 mkdir -p "$HOME/.config/hypr"
 if [ ! -e "$HOME/.config/hypr/hyprland.conf" ]; then
-    cp "Hyprland-Configs/configs/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+    cp "$CONFIG_DIR/configs/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
 else
     echo "Hyprland configuration already exists."
 fi
 
 # Install Hyprpaper
 if ! pacman -Q "hyprpaper" &>/dev/null; then
-    sudo pacman -S --noconfirm hyprpaper
+    sudo pacman -S --needed --noconfirm hyprpaper
 else
     echo "Hyprpaper is already installed."
 fi
@@ -77,36 +86,39 @@ fi
 # Configure wallpaper path
 if [ ! -d "/usr/share/wallpaper" ]; then
     sudo mkdir -p /usr/share/wallpaper
-    sudo cp Hyprland-Configs/Wallpapers/* /usr/share/wallpaper/
+    sudo cp "$CONFIG_DIR/Wallpapers/"* /usr/share/wallpaper/
 else
     echo "Wallpapers already configured."
 fi
 
 # Configure hyprpaper
-if [ ! -e "~/.config/hypr/hyprpaper.conf" ]; then
-    touch ~/.config/hypr/hyprpaper.conf
-    cp Hyprland-Configs/configs/hypr/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
+mkdir -p "$HOME/.config/hypr"
+if [ ! -e "$HOME/.config/hypr/hyprpaper.conf" ]; then
+    cp "$CONFIG_DIR/configs/hypr/hyprpaper.conf" "$HOME/.config/hypr/hyprpaper.conf"
 else
     echo "Hyprpaper configuration already exists."
 fi
 
 # Minimal Vim configuration
-if [ ! -e ".vimrc" ]; then
-    touch .vimrc
-    cp Hyprland-Configs/configs/.vimrc .vimrc
+if [ ! -e "$HOME/.vimrc" ]; then
+    cp "$CONFIG_DIR/configs/.vimrc" "$HOME/.vimrc"
 else
     echo "Vim configuration already exists."
 fi
 
 # Install LightDM
 if ! pacman -Q "lightdm" &>/dev/null || ! pacman -Q "lightdm-slick-greeter" &>/dev/null; then
-    sudo pacman -S --noconfirm lightdm lightdm-slick-greeter || { echo "Failed to install LightDM."; exit 1; }
+    sudo pacman -S --needed --noconfirm lightdm lightdm-slick-greeter || { echo "Failed to install LightDM."; exit 1; }
     sudo systemctl enable lightdm.service
-    cd Hyprland-Configs/configs/Lightdm
-    sudo mv slick-greeter.conf /etc/lightdm/slick-greeter.conf
-    sudo cp lightdm.conf /etc/lightdm/lightdm.conf
+fi
+
+# Configure LightDM
+LIGHTDM_DIR="$CONFIG_DIR/configs/Lightdm"
+if [ -d "$LIGHTDM_DIR" ]; then
+    sudo cp "$LIGHTDM_DIR/slick-greeter.conf" /etc/lightdm/slick-greeter.conf
+    sudo cp "$LIGHTDM_DIR/lightdm.conf" /etc/lightdm/lightdm.conf
 else
-    echo "LightDM is already installed and configured."
+    echo "LightDM config directory not found!"
 fi
 
 # Reboot
