@@ -42,10 +42,10 @@ fi
 # Configure wofi, alacritty, wlogout, and waybar
 CONFIGS=("wofi" "alacritty.toml" "waybar" "wlogout")
 for config in "${CONFIGS[@]}"; do
-    if [ ! -e "~/.config/$config" ]; then
-        cp -r "Hyprland-Configs/configs/$config" "~/.config"
+    if [ ! -e "$HOME/.config/$config" ]; then
+        cp -r "Hyprland-Configs/configs/$config" "$HOME/.config"
     else
-        echo "Configuration $config already exists in ~/.config."
+        echo "Configuration $config already exists in $HOME/.config."
     fi
 done
 
@@ -60,9 +60,9 @@ for font in "${FONT_PACKAGES[@]}"; do
 done
 
 # Configure hyprland.conf
-if [ ! -e "~/.config/hypr/hyprland.conf" ]; then
-    mkdir -p ~/.config/hypr
-    mv Hyprland-Configs/configs/hypr/hyprland.conf ~/.config/hypr
+mkdir -p "$HOME/.config/hypr"
+if [ ! -e "$HOME/.config/hypr/hyprland.conf" ]; then
+    cp "Hyprland-Configs/configs/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
 else
     echo "Hyprland configuration already exists."
 fi
