@@ -2,8 +2,6 @@
 
 **Just for fun I made a script that will automate my task of setting up my personal Desktop Environment.**
 
-#### ScriptV2 Status: _Broken_
-
 The script automate Installing the basics, Hyprland, wofi ,dolphin, alacritty and waybar, and install and configure the necessary things needed in order to have a functional Desktop Environment.
 
 
