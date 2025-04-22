@@ -71,7 +71,7 @@ done
 # Configure hyprland.conf
 mkdir -p "$HOME/.config/hypr"
 if [ ! -e "$HOME/.config/hypr/hyprland.conf" ]; then
-    cp "$CONFIG_DIR/configs/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+    cp -r "$CONFIG_DIR/configs/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
 else
     echo "Hyprland configuration already exists."
 fi
@@ -86,7 +86,7 @@ fi
 # Configure wallpaper path
 if [ ! -d "/usr/share/wallpaper" ]; then
     sudo mkdir -p /usr/share/wallpaper
-    sudo cp "$CONFIG_DIR/Wallpapers/"* /usr/share/wallpaper/
+    sudo cp -r "$CONFIG_DIR/Wallpapers/"* /usr/share/wallpaper/
 else
     echo "Wallpapers already configured."
 fi
@@ -94,14 +94,14 @@ fi
 # Configure hyprpaper
 mkdir -p "$HOME/.config/hypr"
 if [ ! -e "$HOME/.config/hypr/hyprpaper.conf" ]; then
-    cp "$CONFIG_DIR/configs/hypr/hyprpaper.conf" "$HOME/.config/hypr/hyprpaper.conf"
+    cp -r "$CONFIG_DIR/configs/hypr/hyprpaper.conf" "$HOME/.config/hypr/hyprpaper.conf"
 else
     echo "Hyprpaper configuration already exists."
 fi
 
 # Minimal Vim configuration
 if [ ! -e "$HOME/.vimrc" ]; then
-    cp "$CONFIG_DIR/configs/.vimrc" "$HOME/.vimrc"
+    cp -r "$CONFIG_DIR/configs/.vimrc" "$HOME/.vimrc"
 else
     echo "Vim configuration already exists."
 fi
